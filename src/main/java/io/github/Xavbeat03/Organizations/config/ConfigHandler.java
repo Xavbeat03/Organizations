@@ -1,7 +1,7 @@
-package io.github.ExampleUser.ExamplePlugin.config;
+package io.github.Xavbeat03.Organizations.config;
 
-import io.github.ExampleUser.ExamplePlugin.ExamplePlugin;
-import io.github.ExampleUser.ExamplePlugin.Reloadable;
+import io.github.Xavbeat03.Organizations.Organizations;
+import io.github.Xavbeat03.Organizations.Reloadable;
 import com.github.milkdrinkers.Crate.Config;
 
 import javax.inject.Singleton;
@@ -11,7 +11,7 @@ import javax.inject.Singleton;
  */
 @Singleton
 public class ConfigHandler implements Reloadable {
-    private final ExamplePlugin plugin;
+    private final Organizations plugin;
     private Config cfg;
 
     /**
@@ -19,7 +19,7 @@ public class ConfigHandler implements Reloadable {
      *
      * @param plugin the plugin instance
      */
-    public ConfigHandler(ExamplePlugin plugin) {
+    public ConfigHandler(Organizations plugin) {
         this.plugin = plugin;
     }
 

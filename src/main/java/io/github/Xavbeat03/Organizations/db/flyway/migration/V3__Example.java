@@ -1,7 +1,7 @@
-package io.github.ExampleUser.ExamplePlugin.db.flyway.migration;
+package io.github.Xavbeat03.Organizations.db.flyway.migration;
 
-import io.github.ExampleUser.ExamplePlugin.utility.DB;
-import io.github.ExampleUser.ExamplePlugin.utility.Logger;
+import io.github.Xavbeat03.Organizations.utility.DB;
+import io.github.Xavbeat03.Organizations.utility.Logger;
 import org.flywaydb.core.api.migration.BaseJavaMigration;
 import org.flywaydb.core.api.migration.Context;
 import org.jooq.DSLContext;

@@ -1,20 +1,20 @@
-package io.github.ExampleUser.ExamplePlugin;
+package io.github.Xavbeat03.Organizations;
 
 import com.github.milkdrinkers.colorparser.ColorParser;
-import io.github.ExampleUser.ExamplePlugin.command.CommandHandler;
-import io.github.ExampleUser.ExamplePlugin.config.ConfigHandler;
-import io.github.ExampleUser.ExamplePlugin.db.DatabaseHandler;
-import io.github.ExampleUser.ExamplePlugin.hooks.VaultHook;
-import io.github.ExampleUser.ExamplePlugin.listener.ListenerHandler;
-import io.github.ExampleUser.ExamplePlugin.utility.Logger;
+import io.github.Xavbeat03.Organizations.command.CommandHandler;
+import io.github.Xavbeat03.Organizations.config.ConfigHandler;
+import io.github.Xavbeat03.Organizations.db.DatabaseHandler;
+import io.github.Xavbeat03.Organizations.hooks.VaultHook;
+import io.github.Xavbeat03.Organizations.listener.ListenerHandler;
+import io.github.Xavbeat03.Organizations.utility.Logger;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Main class.
  */
-public class ExamplePlugin extends JavaPlugin {
-    private static ExamplePlugin instance;
+public class Organizations extends JavaPlugin {
+    private static Organizations instance;
     private ConfigHandler configHandler;
     private DatabaseHandler databaseHandler;
     private CommandHandler commandHandler;
@@ -26,7 +26,7 @@ public class ExamplePlugin extends JavaPlugin {
      *
      * @return the plugin instance
      */
-    public static ExamplePlugin getInstance() {
+    public static Organizations getInstance() {
         return instance;
     }
 

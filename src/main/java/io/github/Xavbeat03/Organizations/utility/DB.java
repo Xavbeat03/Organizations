@@ -1,9 +1,9 @@
-package io.github.ExampleUser.ExamplePlugin.utility;
+package io.github.Xavbeat03.Organizations.utility;
 
-import io.github.ExampleUser.ExamplePlugin.ExamplePlugin;
-import io.github.ExampleUser.ExamplePlugin.db.DatabaseHandler;
-import io.github.ExampleUser.ExamplePlugin.db.DatabaseType;
-import io.github.ExampleUser.ExamplePlugin.db.jooq.JooqContext;
+import io.github.Xavbeat03.Organizations.Organizations;
+import io.github.Xavbeat03.Organizations.db.DatabaseHandler;
+import io.github.Xavbeat03.Organizations.db.DatabaseType;
+import io.github.Xavbeat03.Organizations.db.jooq.JooqContext;
 import org.jetbrains.annotations.NotNull;
 import org.jooq.DSLContext;
 
@@ -22,7 +22,7 @@ public abstract class DB {
      */
     @NotNull
     public static Connection getConnection() throws SQLException {
-        return ExamplePlugin.getInstance().getDataHandler().getConnection();
+        return Organizations.getInstance().getDataHandler().getConnection();
     }
 
     /**
@@ -33,7 +33,7 @@ public abstract class DB {
      */
     @NotNull
     public static DSLContext getContext(Connection con) {
-        return ExamplePlugin.getInstance().getDataHandler().getJooqContext().createContext(con);
+        return Organizations.getInstance().getDataHandler().getJooqContext().createContext(con);
     }
 
     /**
@@ -42,6 +42,6 @@ public abstract class DB {
      * @return the db
      */
     public static DatabaseType getDB() {
-        return ExamplePlugin.getInstance().getDataHandler().getDB();
+        return Organizations.getInstance().getDataHandler().getDB();
     }
 }

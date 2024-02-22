@@ -1,7 +1,7 @@
-package io.github.ExampleUser.ExamplePlugin.utility;
+package io.github.Xavbeat03.Organizations.utility;
 
-import io.github.ExampleUser.ExamplePlugin.ExamplePlugin;
-import io.github.ExampleUser.ExamplePlugin.config.ConfigHandler;
+import io.github.Xavbeat03.Organizations.Organizations;
+import io.github.Xavbeat03.Organizations.config.ConfigHandler;
 import com.github.milkdrinkers.Crate.Config;
 import org.jetbrains.annotations.NotNull;
 
@@ -16,6 +16,6 @@ public abstract class Cfg {
      */
     @NotNull
     public static Config get() {
-        return ExamplePlugin.getInstance().getConfigHandler().getConfig();
+        return Organizations.getInstance().getConfigHandler().getConfig();
     }
 }

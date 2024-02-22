@@ -1,4 +1,4 @@
-package io.github.ExampleUser.ExamplePlugin.command;
+package io.github.Xavbeat03.Organizations.command;
 
 import com.github.milkdrinkers.colorparser.ColorParser;
 import dev.jorel.commandapi.CommandAPICommand;

@@ -1,20 +1,20 @@
-package io.github.ExampleUser.ExamplePlugin.listener;
+package io.github.Xavbeat03.Organizations.listener;
 
-import io.github.ExampleUser.ExamplePlugin.ExamplePlugin;
-import io.github.ExampleUser.ExamplePlugin.Reloadable;
+import io.github.Xavbeat03.Organizations.Organizations;
+import io.github.Xavbeat03.Organizations.Reloadable;
 
 /**
  * A class to handle registration of event listeners.
  */
 public class ListenerHandler implements Reloadable {
-    private final ExamplePlugin plugin;
+    private final Organizations plugin;
 
     /**
      * Instantiates a the Listener handler.
      *
      * @param plugin the plugin instance
      */
-    public ListenerHandler(ExamplePlugin plugin) {
+    public ListenerHandler(Organizations plugin) {
         this.plugin = plugin;
     }
 

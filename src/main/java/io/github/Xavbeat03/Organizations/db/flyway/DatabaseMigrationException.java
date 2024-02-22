@@ -1,4 +1,4 @@
-package io.github.ExampleUser.ExamplePlugin.db.flyway;
+package io.github.Xavbeat03.Organizations.db.flyway;
 
 /**
  * Database migration exception is thrown whenever a Flyway migration fails.

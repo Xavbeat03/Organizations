@@ -1,4 +1,4 @@
-package io.github.ExampleUser.ExamplePlugin.db;
+package io.github.Xavbeat03.Organizations.db;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.h2.jdbcx.JdbcDataSource;

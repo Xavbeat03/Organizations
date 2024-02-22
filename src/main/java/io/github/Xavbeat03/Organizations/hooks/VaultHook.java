@@ -1,7 +1,7 @@
-package io.github.ExampleUser.ExamplePlugin.hooks;
+package io.github.Xavbeat03.Organizations.hooks;
 
-import io.github.ExampleUser.ExamplePlugin.ExamplePlugin;
-import io.github.ExampleUser.ExamplePlugin.Reloadable;
+import io.github.Xavbeat03.Organizations.Organizations;
+import io.github.Xavbeat03.Organizations.Reloadable;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
  * A hook to interface with the <a href="https://github.com/MilkBowl/VaultAPI">Vault API</a>.
  */
 public class VaultHook implements Reloadable {
-    private final ExamplePlugin plugin;
+    private final Organizations plugin;
     private @Nullable RegisteredServiceProvider<Economy> rspEconomy;
     private @Nullable RegisteredServiceProvider<Permission> rspPermissions;
     private @Nullable RegisteredServiceProvider<Chat> rspChat;
@@ -23,7 +23,7 @@ public class VaultHook implements Reloadable {
      *
      * @param plugin the plugin instance
      */
-    public VaultHook(ExamplePlugin plugin) {
+    public VaultHook(Organizations plugin) {
         this.plugin = plugin;
     }
 

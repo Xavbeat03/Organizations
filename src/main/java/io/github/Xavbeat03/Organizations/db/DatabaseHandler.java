@@ -1,12 +1,12 @@
-package io.github.ExampleUser.ExamplePlugin.db;
+package io.github.Xavbeat03.Organizations.db;
 
-import io.github.ExampleUser.ExamplePlugin.ExamplePlugin;
-import io.github.ExampleUser.ExamplePlugin.Reloadable;
-import io.github.ExampleUser.ExamplePlugin.db.flyway.DatabaseMigrationException;
-import io.github.ExampleUser.ExamplePlugin.db.flyway.DatabaseMigrationHandler;
-import io.github.ExampleUser.ExamplePlugin.db.jooq.JooqContext;
-import io.github.ExampleUser.ExamplePlugin.utility.Cfg;
-import io.github.ExampleUser.ExamplePlugin.utility.Logger;
+import io.github.Xavbeat03.Organizations.Organizations;
+import io.github.Xavbeat03.Organizations.Reloadable;
+import io.github.Xavbeat03.Organizations.db.flyway.DatabaseMigrationException;
+import io.github.Xavbeat03.Organizations.db.flyway.DatabaseMigrationHandler;
+import io.github.Xavbeat03.Organizations.db.jooq.JooqContext;
+import io.github.Xavbeat03.Organizations.utility.Cfg;
+import io.github.Xavbeat03.Organizations.utility.Logger;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.jetbrains.annotations.NotNull;
@@ -22,7 +22,7 @@ import java.util.Map;
  */
 @Singleton
 public class DatabaseHandler implements Reloadable {
-    private final ExamplePlugin plugin;
+    private final Organizations plugin;
     private boolean isConnected = false;
     private HikariDataSource hikariDataSource;
     private DatabaseType database;
@@ -33,7 +33,7 @@ public class DatabaseHandler implements Reloadable {
      *
      * @param plugin the plugin instance
      */
-    public DatabaseHandler(ExamplePlugin plugin) {
+    public DatabaseHandler(Organizations plugin) {
         this.plugin = plugin;
     }
 
@@ -261,7 +261,7 @@ public class DatabaseHandler implements Reloadable {
         hikariConfig.setMaximumPoolSize(poolSize);
         hikariConfig.setMinimumIdle(poolSize);
 
-        hikariConfig.setPoolName("%s-hikari".formatted(ExamplePlugin.getInstance().getName()));
+        hikariConfig.setPoolName("%s-hikari".formatted(Organizations.getInstance().getName()));
         hikariConfig.setAutoCommit(true);
         hikariConfig.setTransactionIsolation("TRANSACTION_REPEATABLE_READ");
         hikariConfig.setIsolateInternalQueries(true);

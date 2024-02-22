@@ -1,6 +1,7 @@
-package io.github.ExampleUser.ExamplePlugin.listener;
+package io.github.Xavbeat03.Organizations.listener;
 
-import io.github.ExampleUser.ExamplePlugin.ExamplePlugin;
+import io.github.Xavbeat03.Organizations.Organizations;
+import io.github.Xavbeat03.Organizations.hooks.VaultHook;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
@@ -10,11 +11,11 @@ import org.bukkit.event.server.ServiceRegisterEvent;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
 /**
- * Event Listener for the Vault Hook {@link io.github.ExampleUser.ExamplePlugin.hooks.VaultHook}.
+ * Event Listener for the Vault Hook {@link VaultHook}.
  */
 public class VaultListener implements Listener {
     /**
-     * Update the Vault hooks RegisteredServiceProviders in {@link io.github.ExampleUser.ExamplePlugin.hooks.VaultHook}. <br>This ensures the Vault hook is lazily loaded and working properly, even on reloads.
+     * Update the Vault hooks RegisteredServiceProviders in {@link VaultHook}. <br>This ensures the Vault hook is lazily loaded and working properly, even on reloads.
      *
      * @param e event
      */
@@ -24,11 +25,11 @@ public class VaultListener implements Listener {
         RegisteredServiceProvider<?> rsp = e.getProvider();
         Object rspProvider = rsp.getProvider();
         if (rspProvider instanceof Economy) {
-            ExamplePlugin.getVaultHook().setEconomy((RegisteredServiceProvider<Economy>) rsp);
+            Organizations.getVaultHook().setEconomy((RegisteredServiceProvider<Economy>) rsp);
         } else if (rspProvider instanceof Permission) {
-            ExamplePlugin.getVaultHook().setPermissions((RegisteredServiceProvider<Permission>) rsp);
+            Organizations.getVaultHook().setPermissions((RegisteredServiceProvider<Permission>) rsp);
         } else if (rspProvider instanceof Chat) {
-            ExamplePlugin.getVaultHook().setChat((RegisteredServiceProvider<Chat>) rsp);
+            Organizations.getVaultHook().setChat((RegisteredServiceProvider<Chat>) rsp);
         }
     }
 }

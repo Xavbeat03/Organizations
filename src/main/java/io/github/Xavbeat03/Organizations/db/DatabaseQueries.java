@@ -1,7 +1,7 @@
-package io.github.ExampleUser.ExamplePlugin.db;
+package io.github.Xavbeat03.Organizations.db;
 
-import io.github.ExampleUser.ExamplePlugin.utility.DB;
-import io.github.ExampleUser.ExamplePlugin.utility.Logger;
+import io.github.Xavbeat03.Organizations.utility.DB;
+import io.github.Xavbeat03.Organizations.utility.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jooq.DSLContext;

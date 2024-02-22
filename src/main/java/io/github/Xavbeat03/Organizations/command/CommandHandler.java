@@ -1,7 +1,7 @@
-package io.github.ExampleUser.ExamplePlugin.command;
+package io.github.Xavbeat03.Organizations.command;
 
-import io.github.ExampleUser.ExamplePlugin.ExamplePlugin;
-import io.github.ExampleUser.ExamplePlugin.Reloadable;
+import io.github.Xavbeat03.Organizations.Organizations;
+import io.github.Xavbeat03.Organizations.Reloadable;
 import dev.jorel.commandapi.CommandAPI;
 import dev.jorel.commandapi.CommandAPIBukkitConfig;
 
@@ -9,14 +9,14 @@ import dev.jorel.commandapi.CommandAPIBukkitConfig;
  * A class to handle registration of commands.
  */
 public class CommandHandler implements Reloadable {
-    private final ExamplePlugin plugin;
+    private final Organizations plugin;
 
     /**
      * Instantiates the Command handler.
      *
      * @param plugin the plugin
      */
-    public CommandHandler(ExamplePlugin plugin) {
+    public CommandHandler(Organizations plugin) {
         this.plugin = plugin;
     }
 

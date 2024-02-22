@@ -1,4 +1,4 @@
-package io.github.ExampleUser.ExamplePlugin;
+package io.github.Xavbeat03.Organizations;
 
 /**
  * Implemented in classes that should support being reloaded IE executing the methods during runtime after startup.
