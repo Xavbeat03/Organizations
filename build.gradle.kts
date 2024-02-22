@@ -15,9 +15,9 @@ plugins {
     idea
 }
 
-group = "io.github.ExampleUser"
-version = "1.0.5"
-description = ""
+group = "io.github.Xavbeat03"
+version = "0.0.1"
+description = "Organizations gives players the ability to organize together outside of Towny governments."
 val mainPackage = "${project.group}.${rootProject.name}"
 
 java {
@@ -35,8 +35,17 @@ repositories {
         content {
             includeGroup("com.github.milkdrinkers")
             includeGroup("com.github.MilkBowl")
+            includeGroup("com.github.TownyAdvanced")
         }
     }
+
+    maven("https://papermc.io/repo/repository/maven-public/")
+
+    maven("https://repo.glaremasters.me/repository/towny/") {
+        content { includeGroup("com.palmergames.bukkit.towny") }
+    }
+
+    maven("https://maven.enginehub.org/repo/")
 }
 
 dependencies {
@@ -60,6 +69,8 @@ dependencies {
         exclude("net.kyori")
     }
     compileOnly("com.github.MilkBowl:VaultAPI:1.7.1")
+
+    compileOnly("com.palmergames.bukkit.towny:towny:0.100.1.0")
 
     // Database Dependencies
     implementation("com.zaxxer:HikariCP:5.1.0")
@@ -160,7 +171,7 @@ bukkit { // Options: https://github.com/Minecrell/plugin-yml#bukkit
     prefix = project.name
     version = "${project.version}"
     description = "${project.description}"
-    authors = listOf("GITHUB_USERNAME")
+    authors = listOf("Xavbeat03")
     contributors = listOf()
     apiVersion = "1.19"
 
