@@ -43,6 +43,7 @@ public class Organization {
      */
     public Organization(String name, Date foundingDate, Player player){
         if(name.length() <= NAME_MAX_CHAR_LENGTH && name.length() > NAME_MIN_CHAR_LENGTH) throw new IllegalArgumentException("Name of organization is not contained within [%d,%d]".formatted(NAME_MIN_CHAR_LENGTH, NAME_MAX_CHAR_LENGTH);
+        checkIfNameIsBeingUsed(name);
         this.name = name;
         this.motd = "";
         this.description = "";
@@ -80,6 +81,7 @@ public class Organization {
                         String logo, Date foundingDate, UUID uuid,
                         Map<Integer, String> ranksMap, List<UUID> subOrganizations, UUID parentOrganization,
                         List<UUID> playerUUIDs, List<UUID> joinedTownUUIDs, List<UUID> joinedNationUUIDs) {
+        checkIfNameIsBeingUsed(name);
         this.name = name;
         this.motd = motd;
         this.description = description;
@@ -100,7 +102,12 @@ public class Organization {
      */
     public void setName(String name){
         if(name.length() <= NAME_MAX_CHAR_LENGTH && name.length() > NAME_MIN_CHAR_LENGTH) throw new IllegalArgumentException("Name of organization is not contained within [%d,%d].".formatted(NAME_MIN_CHAR_LENGTH, NAME_MAX_CHAR_LENGTH));
+        checkIfNameIsBeingUsed(name);
         this.name = name;
+    }
+
+    private static void checkIfNameIsBeingUsed(String name) throws IllegalArgumentException {
+        Organization.organizationList.values().forEach( (o) -> {if (name.equals(o.name)) throw new IllegalArgumentException("Name of organization is already contained within the Organization Map.");});
     }
 
     /**
