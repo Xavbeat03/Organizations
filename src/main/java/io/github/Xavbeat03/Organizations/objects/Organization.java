@@ -42,7 +42,8 @@ public class Organization {
      * @param player the player who is creating the organization
      */
     public Organization(String name, Date foundingDate, Player player){
-        if(name.length() <= NAME_MAX_CHAR_LENGTH && name.length() > NAME_MIN_CHAR_LENGTH) throw new IllegalArgumentException("Name of organization is not contained within [%d,%d]".formatted(NAME_MIN_CHAR_LENGTH, NAME_MAX_CHAR_LENGTH);
+        if(name.length() <= NAME_MAX_CHAR_LENGTH && name.length() > NAME_MIN_CHAR_LENGTH) throw new IllegalArgumentException("Name of organization is not contained within [%d,%d]".formatted(NAME_MIN_CHAR_LENGTH, NAME_MAX_CHAR_LENGTH));
+
         checkIfNameIsBeingUsed(name);
         this.name = name;
         this.motd = "";
@@ -287,7 +288,6 @@ public class Organization {
     /**
      * Gets organization by id.
      *
-     * @param id the id
      * @return the organization by id
      */
     public int getOrganizationTempId() {
@@ -297,8 +297,7 @@ public class Organization {
     /**
      * Gets organization by id.
      *
-     * @param id the id
-     * @return the organization by id
+     * @return the name of the organization
      */
     public String getName() {
         return name;
