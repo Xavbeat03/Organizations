@@ -31,7 +31,8 @@ public class Organization {
     private Map<Integer, String> ranksMap = new HashMap<>();
     private List<UUID> subOrganizations;
     private UUID parentOrganization;
-    private List<UUID> playerUUIDs;
+    private Map<UUID, Integer> playerUUIDRankMap;
+    private List<UUID> explicitlyJoinedPlayers;
     private List<UUID> joinedTownUUIDs;
     private List<UUID> joinedNationUUIDs;
 
@@ -54,8 +55,8 @@ public class Organization {
         ranksMap.put(9, "Leader");
         this.subOrganizations = new ArrayList<>();
         this.parentOrganization = null;
-        this.playerUUIDs = new ArrayList<>();
-        this.playerUUIDs.add(player.getUniqueId());
+        this.playerUUIDRankMap.put(player.getUniqueId(), 9);
+        this.explicitlyJoinedPlayers.add(player.getUniqueId());
         this.joinedTownUUIDs = new ArrayList<>();
         this.joinedNationUUIDs = new ArrayList<>();
 
@@ -74,14 +75,13 @@ public class Organization {
      * @param ranksMap the ranks map of the organization
      * @param subOrganizations the sub organizations of the organization
      * @param parentOrganization the parent organization of the organization
-     * @param playerUUIDs the player uuids of the organization
      * @param joinedTownUUIDs the joined town uuids of the organization
      * @param joinedNationUUIDs the joined nation uuids of the organization
      */
     public Organization(String name, String motd, String description,
                         String logo, Date foundingDate, UUID uuid,
                         Map<Integer, String> ranksMap, List<UUID> subOrganizations, UUID parentOrganization,
-                        List<UUID> playerUUIDs, List<UUID> joinedTownUUIDs, List<UUID> joinedNationUUIDs) {
+                        Map<UUID, Integer> playerUUIDsRankMap, List<UUID> joinedTownUUIDs, List<UUID> joinedNationUUIDs) {
         checkIfNameIsBeingUsed(name);
         this.name = name;
         this.motd = motd;
@@ -92,8 +92,7 @@ public class Organization {
         this.ranksMap = ranksMap;
         this.subOrganizations = subOrganizations;
         this.parentOrganization = parentOrganization;
-        this.playerUUIDs = playerUUIDs;
-        this.joinedTownUUIDs = joinedTownUUIDs;
+		this.joinedTownUUIDs = joinedTownUUIDs;
         this.joinedNationUUIDs = joinedNationUUIDs;
     }
 
@@ -108,7 +107,7 @@ public class Organization {
     }
 
     private static void checkIfNameIsBeingUsed(String name) throws IllegalArgumentException {
-        Organization.organizationList.values().forEach( (o) -> {if (name.equals(o.name)) throw new IllegalArgumentException("Name of organization is already contained within the Organization Map.");});
+        Organization.organizationList.values().forEach( o -> {if (name.equals(o.name)) throw new IllegalArgumentException("Name of organization is already contained within the Organization Map.");});
     }
 
     /**
@@ -212,11 +211,12 @@ public class Organization {
     /**
      * Adds a player to the organization.
      * @param playerUUID the player to add
+     * TODO: Have some param for adding explicit players
      */
     public void addPlayerToOrganization(UUID playerUUID) {
-        if (this.playerUUIDs.contains(playerUUID))
+        if (this.playerUUIDRankMap.containsKey(playerUUID))
             throw new IllegalArgumentException("Player already contained by Organization.");
-        this.playerUUIDs.add(playerUUID);
+        this.playerUUIDRankMap.put(playerUUID, 0);
     }
 
     /**
@@ -234,9 +234,9 @@ public class Organization {
      * @param playerUUID the player to remove
      */
     public void removePlayerFromOrganization(UUID playerUUID) {
-        if (!this.playerUUIDs.contains(playerUUID))
+        if (!this.playerUUIDRankMap.containsKey(playerUUID))
             throw new IllegalArgumentException("Player not contained by Organization.");
-        this.playerUUIDs.remove(playerUUID);
+        this.playerUUIDRankMap.remove(playerUUID);
     }
 
     /**
@@ -250,8 +250,10 @@ public class Organization {
     }
 
     public void addTownToOrganization(UUID townUUID){
-        if(this.joinedTownUUIDs.contains(townUUID)) throw new IllegalArgumentException("Town already contained by Organization.");
-
+        if(this.joinedTownUUIDs.contains(townUUID))
+            throw new IllegalArgumentException("Town already contained by Organization.");
+        if(TownyAPI.getInstance().getTown(townUUID) == null)
+            throw new IllegalArgumentException("Town doesn't exist.");
         this.joinedTownUUIDs.add(townUUID);
         TownyAPI.getInstance().getTown(townUUID).getResidents().forEach(resident -> addPlayerToOrganization(resident.getUUID()));
     }
@@ -376,13 +378,11 @@ public class Organization {
     }
 
     /**
-     * Gets player uuids.
+     * Gets the player UUID rank map
      *
-     * @return the player uuids
+     * @return the player uuid rank map
      */
-    public List<UUID> getPlayerUUIDs() {
-        return playerUUIDs;
-    }
+    public Map<UUID, Integer> getPlayerUUIDRankMap() {return playerUUIDRankMap;}
 
     /**
      * Gets joined town uuids.
