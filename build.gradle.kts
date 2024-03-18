@@ -70,7 +70,7 @@ dependencies {
     }
     compileOnly("com.github.MilkBowl:VaultAPI:1.7.1")
 
-    compileOnly("com.palmergames.bukkit.towny:towny:0.100.1.0")
+    compileOnly("com.palmergames.bukkit.towny:towny:0.100.1.20")
 
     // Database Dependencies
     implementation("com.zaxxer:HikariCP:5.1.0")
